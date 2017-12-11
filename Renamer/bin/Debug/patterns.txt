@@ -1,0 +1,5 @@
+[FolderName]_$
+$_[FolderName]
+$[FolderName]
+[FolderName]$
+FolderName($)[FolderName]___$
