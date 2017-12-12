@@ -2,4 +2,4 @@
 $_[FolderName]
 $[FolderName]
 [FolderName]$
-FolderName($)[FolderName]___$
+FolderName($)
