@@ -133,7 +133,7 @@ namespace Renamer
 				return;
 			}
 			
-			File.AppendAllLines("patterns.txt", new string[] {PatternBox.Text.Trim()});
+			File.AppendAllText("patterns.txt", "\n"+PatternBox.Text.Trim());
 			ListBox.Items.Add(PatternBox.Text.Trim());
 		}
 		
