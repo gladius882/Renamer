@@ -68,7 +68,6 @@ namespace Renamer
 			
 			foreach(FileInfo file in files)
 			{
-				MessageBox.Show(file.Name + Environment.NewLine + file.CreationTime);
 				RenameFile(file);
 			}
 			
