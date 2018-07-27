@@ -30,6 +30,11 @@ namespace Renamer
 			{
 				ListBox.Items.Add(pattern);
 			}
+			
+			SortOrder.SelectedIndex = 0;
+			SortOrder.Select();
+			SortOrderType.SelectedIndex = 0;
+			SortOrderType.Select();
 		}
 		
 		void Button1Click(object sender, EventArgs e)
@@ -47,9 +52,14 @@ namespace Renamer
 				return;
 			}
 			
-			string[] files = Directory.GetFiles(textBox1.Text.Trim());
+			List<FileInfo> files = new List<FileInfo>();
 			
-			foreach(string file in files)
+			foreach(string fileName in Directory.GetFiles(textBox1.Text.Trim()))
+			{
+				files.Add(new FileInfo(fileName));
+			}
+			
+			foreach(FileInfo file in files)
 			{
 				RenameFile(file);
 			}
@@ -57,8 +67,9 @@ namespace Renamer
 			currentNum = 1;
 		}
 		
-		private void RenameFile(string path)
+		private void RenameFile(FileInfo file)
 		{
+			string path = file.FullName;
 			string[] oldPath = path.Trim().Split('\\');
 			string folderName = oldPath[oldPath.Length-2];
 			string extension = path.Split('.')[path.Split('.').Length-1];

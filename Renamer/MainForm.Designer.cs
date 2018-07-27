@@ -47,7 +47,6 @@ namespace Renamer
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.ChooseFolderButton = new System.Windows.Forms.Button();
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -60,6 +59,9 @@ namespace Renamer
 			this.label1 = new System.Windows.Forms.Label();
 			this.PatternBox = new System.Windows.Forms.TextBox();
 			this.AddPatternButton = new System.Windows.Forms.Button();
+			this.label2 = new System.Windows.Forms.Label();
+			this.SortOrder = new System.Windows.Forms.ComboBox();
+			this.SortOrderType = new System.Windows.Forms.ComboBox();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LeadingZeros)).BeginInit();
 			this.SuspendLayout();
@@ -105,7 +107,7 @@ namespace Renamer
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.programToolStripMenuItem});
+									this.programToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(474, 24);
@@ -115,7 +117,7 @@ namespace Renamer
 			// programToolStripMenuItem
 			// 
 			this.programToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.exitToolStripMenuItem});
+									this.exitToolStripMenuItem});
 			this.programToolStripMenuItem.Name = "programToolStripMenuItem";
 			this.programToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
 			this.programToolStripMenuItem.Text = "Program";
@@ -123,7 +125,7 @@ namespace Renamer
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -135,10 +137,10 @@ namespace Renamer
 			this.LeadingZeros.Size = new System.Drawing.Size(80, 22);
 			this.LeadingZeros.TabIndex = 5;
 			this.LeadingZeros.Value = new decimal(new int[] {
-			3,
-			0,
-			0,
-			0});
+									3,
+									0,
+									0,
+									0});
 			// 
 			// label1
 			// 
@@ -168,11 +170,51 @@ namespace Renamer
 			this.AddPatternButton.UseVisualStyleBackColor = true;
 			this.AddPatternButton.Click += new System.EventHandler(this.AddPatternButtonClick);
 			// 
+			// label2
+			// 
+			this.label2.Location = new System.Drawing.Point(11, 289);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(70, 23);
+			this.label2.TabIndex = 10;
+			this.label2.Text = "Sort order:";
+			// 
+			// SortOrder
+			// 
+			this.SortOrder.DisplayMember = "Date";
+			this.SortOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.SortOrder.FormattingEnabled = true;
+			this.SortOrder.Items.AddRange(new object[] {
+									"Date",
+									"Filename",
+									"None"});
+			this.SortOrder.Location = new System.Drawing.Point(87, 286);
+			this.SortOrder.Name = "SortOrder";
+			this.SortOrder.Size = new System.Drawing.Size(121, 21);
+			this.SortOrder.TabIndex = 11;
+			this.SortOrder.Text = "Date";
+			this.SortOrder.ValueMember = "Date";
+			// 
+			// SortOrderType
+			// 
+			this.SortOrderType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.SortOrderType.FormattingEnabled = true;
+			this.SortOrderType.Items.AddRange(new object[] {
+									"Ascending",
+									"Descending"});
+			this.SortOrderType.Location = new System.Drawing.Point(214, 286);
+			this.SortOrderType.Name = "SortOrderType";
+			this.SortOrderType.Size = new System.Drawing.Size(121, 21);
+			this.SortOrderType.TabIndex = 12;
+			this.SortOrderType.Text = "Descending";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(474, 281);
+			this.ClientSize = new System.Drawing.Size(474, 318);
+			this.Controls.Add(this.SortOrderType);
+			this.Controls.Add(this.SortOrder);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.AddPatternButton);
 			this.Controls.Add(this.PatternBox);
 			this.Controls.Add(this.label1);
@@ -182,7 +224,6 @@ namespace Renamer
 			this.Controls.Add(this.ChooseFolderButton);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.menuStrip1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MainForm";
 			this.Text = "Renamer";
@@ -191,7 +232,9 @@ namespace Renamer
 			((System.ComponentModel.ISupportInitialize)(this.LeadingZeros)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
+		private System.Windows.Forms.ComboBox SortOrderType;
+		private System.Windows.Forms.ComboBox SortOrder;
+		private System.Windows.Forms.Label label2;
 	}
 }
