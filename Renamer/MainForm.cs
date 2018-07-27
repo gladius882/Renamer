@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Linq;
 
 namespace Renamer
 {
@@ -59,12 +60,45 @@ namespace Renamer
 				files.Add(new FileInfo(fileName));
 			}
 			
+			string sort = SortOrder.SelectedItem.ToString();
+			string sortType = SortOrderType.SelectedItem.ToString();
+			
+			files = SortFiles(files, sort,sortType);
+			
+			
 			foreach(FileInfo file in files)
 			{
+				MessageBox.Show(file.Name + Environment.NewLine + file.CreationTime);
 				RenameFile(file);
 			}
 			
 			currentNum = 1;
+		}
+		
+		private List<FileInfo> SortFiles(List<FileInfo> files, string order, string type)
+		{
+			order = order.ToLower().Trim();
+			type = type.ToLower().Trim();
+			
+			switch(order)
+			{
+					case "date" : {
+						var res = files.OrderBy(f => f.CreationTime).ToList();
+						if(type == "descending")
+							res.Reverse();
+						return res;
+					}
+					case "filename" : {
+						var res = files.OrderBy(f => f.Name).ToList();
+						if(type == "descending")
+							res.Reverse();
+						return res;
+					}
+					default : {
+						return files;
+					}
+				
+			}
 		}
 		
 		private void RenameFile(FileInfo file)
