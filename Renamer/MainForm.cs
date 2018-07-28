@@ -81,8 +81,14 @@ namespace Renamer
 			
 			switch(order)
 			{
-					case "date" : {
+					case "creation date" : {
 						var res = files.OrderBy(f => f.CreationTime).ToList();
+						if(type == "descending")
+							res.Reverse();
+						return res;
+					}
+					case "modification date" : {
+						var res = files.OrderBy(f => f.LastWriteTime).ToList();
 						if(type == "descending")
 							res.Reverse();
 						return res;

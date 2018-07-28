@@ -184,14 +184,15 @@ namespace Renamer
 			this.SortOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.SortOrder.FormattingEnabled = true;
 			this.SortOrder.Items.AddRange(new object[] {
-									"Date",
+									"Modification Date",
+									"Creation Date",
 									"Filename",
 									"None"});
 			this.SortOrder.Location = new System.Drawing.Point(87, 286);
 			this.SortOrder.Name = "SortOrder";
 			this.SortOrder.Size = new System.Drawing.Size(121, 21);
 			this.SortOrder.TabIndex = 11;
-			this.SortOrder.Text = "Date";
+			this.SortOrder.Text = "Creation Date";
 			this.SortOrder.ValueMember = "Date";
 			// 
 			// SortOrderType

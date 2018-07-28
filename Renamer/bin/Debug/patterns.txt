@@ -5,3 +5,5 @@ $[FolderName]
 FolderName($)
 [FolderName]___$
 test
+[FolderName] [$]
+[FolderName] odc. $
