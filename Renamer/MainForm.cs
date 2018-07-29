@@ -23,12 +23,10 @@ namespace Renamer
 		
 		public MainForm()
 		{
-			currentNum = 1;
 			InitializeComponent();
 			
 			string[] patterns = File.ReadAllLines("patterns.txt");
-			foreach(string pattern in patterns)
-			{
+			foreach(string pattern in patterns) {
 				ListBox.Items.Add(pattern);
 			}
 			
@@ -36,6 +34,12 @@ namespace Renamer
 			SortOrder.Select();
 			SortOrderType.SelectedIndex = 0;
 			SortOrderType.Select();
+			
+			AutoCompleteStringCollection col = new AutoCompleteStringCollection();
+			foreach(string item in File.ReadAllLines(".autocomplete")) {
+				col.Add(item);
+			}
+			textBox1.AutoCompleteCustomSource = col;
 		}
 		
 		void Button1Click(object sender, EventArgs e)
@@ -49,61 +53,77 @@ namespace Renamer
 			try {
 				CheckData();
 			}
-			catch(Exception ex) {
+			catch {
 				return;
 			}
-			
+		
+			string directory = textBox1.Text.Trim();
+			AddAutocomplete(directory);
+				
 			List<FileInfo> files = new List<FileInfo>();
 			
-			foreach(string fileName in Directory.GetFiles(textBox1.Text.Trim()))
-			{
+			foreach(string fileName in Directory.GetFiles(textBox1.Text.Trim())) {
 				files.Add(new FileInfo(fileName));
 			}
 			
 			string sort = SortOrder.SelectedItem.ToString();
 			string sortType = SortOrderType.SelectedItem.ToString();
+			currentNum = (int)StartFrom.Value;
 			
 			files = SortFiles(files, sort,sortType);
 			
-			
-			foreach(FileInfo file in files)
-			{
+			foreach(FileInfo file in files) {
 				RenameFile(file);
 			}
+		}
+		
+		private void AddAutocomplete(string directory)
+		{
+			List<string> autocomplete = File.ReadAllLines(".autocomplete").ToList();
+			if(autocomplete.Contains(directory) == false)
+			{
+				autocomplete.Add(directory);
+				textBox1.AutoCompleteCustomSource.Add(directory);
+			}
 			
-			currentNum = 1;
+			File.WriteAllText(".autocomplete", "");
+			foreach(string item in autocomplete) {
+				File.AppendAllText(".autocomplete", item + Environment.NewLine);
+			}
 		}
 		
 		private List<FileInfo> SortFiles(List<FileInfo> files, string order, string type)
 		{
 			order = order.ToLower().Trim();
 			type = type.ToLower().Trim();
+			List<FileInfo> res;
 			
 			switch(order)
 			{
 					case "creation date" : {
-						var res = files.OrderBy(f => f.CreationTime).ToList();
-						if(type == "descending")
-							res.Reverse();
-						return res;
+						res = files.OrderBy(f => f.CreationTime).ToList();
+						break;
 					}
 					case "modification date" : {
-						var res = files.OrderBy(f => f.LastWriteTime).ToList();
-						if(type == "descending")
-							res.Reverse();
-						return res;
+						res = files.OrderBy(f => f.LastWriteTime).ToList();
+						break;
 					}
 					case "filename" : {
-						var res = files.OrderBy(f => f.Name).ToList();
-						if(type == "descending")
-							res.Reverse();
-						return res;
+						res = files.OrderBy(f => f.Name).ToList();
+						break;
 					}
 					default : {
-						return files;
+						res = files;
+						break;
 					}
 				
 			}
+			
+			if(type == "descending") {
+				res.Reverse();
+			}
+			
+			return res;
 		}
 		
 		private void RenameFile(FileInfo file)
@@ -114,8 +134,7 @@ namespace Renamer
 			string extension = path.Split('.')[path.Split('.').Length-1];
 			List<string> newPathArr = new List<string>();
 			
-			for(int i=0; i<oldPath.Length-1; i++)
-			{
+			for(int i=0; i<oldPath.Length-1; i++) {
 				newPathArr.Add(oldPath[i]+"\\");
 			}
 			
@@ -123,8 +142,7 @@ namespace Renamer
 			pattern = pattern.Replace("[FolderName]", folderName);
 			string number = currentNum.ToString();
 			
-			if(LeadingZeros.Value != 0)
-			{
+			if(LeadingZeros.Value != 0) {
 				number = currentNum.ToString("D"+LeadingZeros.Value.ToString());
 			}
 			
@@ -133,25 +151,29 @@ namespace Renamer
 			
 			string newPath = "";
 			
-			foreach(string el in newPathArr)
-			{
+			foreach(string el in newPathArr) {
 				newPath += el;
 			}
 			
 			File.Move(path, newPath);
 			
-			currentNum++;
+			currentNum += (int)Step.Value;
 		}
 		
 		private void CheckData()
 		{
 			if(textBox1.Text.Trim() == String.Empty)
 			{
+				MessageBox.Show("Directory cannot be empty", "Warning", MessageBoxButtons.OK,
+				                MessageBoxIcon.Error);
+				throw new Exception();
+			}
+			if(Directory.Exists(textBox1.Text.Trim()) == false)
+			{
 				MessageBox.Show("Can't find choosen directory", "Warning", MessageBoxButtons.OK,
 				                MessageBoxIcon.Error);
 				throw new Exception();
 			}
-			
 			if(Directory.Exists(textBox1.Text.Trim()) == false)
 			{
 				MessageBox.Show("", "Error", MessageBoxButtons.OK,
