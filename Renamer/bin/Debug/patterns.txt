@@ -1,9 +1,7 @@
-[FolderName]_$
-$_[FolderName]
-$[FolderName]
-[FolderName]$
-FolderName($)
-[FolderName]___$
-test
-[FolderName] [$]
-[FolderName] odc. $
+*
+<CycleValue>
+<CycleValue> *
+<FolderName> [*]
+<FolderName>*
+<FolderName>_*
+FolderName(*)
