@@ -200,6 +200,8 @@ namespace Renamer
 			
 			string pattern = Patterns.SelectedItem.ToString();
 			pattern = pattern.Replace("<FolderName>", folderName);
+			pattern = pattern.Replace("<Extension>", extension);
+			pattern = pattern.Replace("<Disk>", oldPath.First().ToUpper()[0].ToString());
 			string number = currentNum.ToString();
 			
 			if(LeadingZeros.Value != 0) {
@@ -405,6 +407,12 @@ namespace Renamer
 		{
 			Configuration.Value.UpdateValue("step", Step.Value.ToString());
 			Configuration.Value.Save();
+		}
+		
+		void GuideToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			Form form = new GuideForm();
+			form.ShowDialog();
 		}
 	}
 }

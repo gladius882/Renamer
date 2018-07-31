@@ -6,3 +6,4 @@ C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.exe
 C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.pdb
 C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.MainForm.resources
 C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.csproj.GenerateResource.Cache
+C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.GuideForm.resources

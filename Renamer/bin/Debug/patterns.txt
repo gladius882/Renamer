@@ -2,8 +2,9 @@
 <CycleValue>
 <CycleValue> *
 <FolderName> [*]
+<FolderName> [*] <CycleValue>
 <FolderName>*
 <FolderName>_*
 FolderName(*)
 
-<FolderName> [*] <CycleValue>
+<Disk> *

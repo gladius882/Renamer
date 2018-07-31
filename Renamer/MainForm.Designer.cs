@@ -70,6 +70,8 @@ namespace Renamer
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.guideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LeadingZeros)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.StartFrom)).BeginInit();
@@ -319,7 +321,8 @@ namespace Renamer
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.programToolStripMenuItem});
+									this.programToolStripMenuItem,
+									this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(498, 24);
@@ -337,9 +340,24 @@ namespace Renamer
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+			// 
+			// helpToolStripMenuItem
+			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.guideToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "Help";
+			// 
+			// guideToolStripMenuItem
+			// 
+			this.guideToolStripMenuItem.Name = "guideToolStripMenuItem";
+			this.guideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.guideToolStripMenuItem.Text = "Guide";
+			this.guideToolStripMenuItem.Click += new System.EventHandler(this.GuideToolStripMenuItemClick);
 			// 
 			// MainForm
 			// 
@@ -381,6 +399,8 @@ namespace Renamer
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem guideToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
