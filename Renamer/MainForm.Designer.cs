@@ -87,6 +87,7 @@ namespace Renamer
 			this.FolderPath.Name = "FolderPath";
 			this.FolderPath.Size = new System.Drawing.Size(452, 22);
 			this.FolderPath.TabIndex = 0;
+			this.FolderPath.TextChanged += new System.EventHandler(this.FolderPathTextChanged);
 			this.FolderPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.TextBox1DragDrop);
 			this.FolderPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.TextBoxDragEnter);
 			// 
@@ -148,6 +149,7 @@ namespace Renamer
 									0,
 									0,
 									0});
+			this.LeadingZeros.ValueChanged += new System.EventHandler(this.LeadingZerosValueChanged);
 			// 
 			// label1
 			// 
@@ -164,18 +166,18 @@ namespace Renamer
 									"<FolderName>"});
 			this.PatternBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
 			this.PatternBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-			this.PatternBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.PatternBox.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.PatternBox.Location = new System.Drawing.Point(12, 276);
 			this.PatternBox.Name = "PatternBox";
-			this.PatternBox.Size = new System.Drawing.Size(356, 22);
+			this.PatternBox.Size = new System.Drawing.Size(356, 27);
 			this.PatternBox.TabIndex = 7;
 			// 
 			// AddPatternButton
 			// 
-			this.AddPatternButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.AddPatternButton.Location = new System.Drawing.Point(374, 275);
+			this.AddPatternButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.AddPatternButton.Location = new System.Drawing.Point(374, 276);
 			this.AddPatternButton.Name = "AddPatternButton";
-			this.AddPatternButton.Size = new System.Drawing.Size(89, 23);
+			this.AddPatternButton.Size = new System.Drawing.Size(91, 27);
 			this.AddPatternButton.TabIndex = 8;
 			this.AddPatternButton.Text = "Add pattern";
 			this.AddPatternButton.UseVisualStyleBackColor = true;
@@ -207,6 +209,7 @@ namespace Renamer
 			this.SortOrder.TabIndex = 11;
 			this.SortOrder.Text = "Creation Date";
 			this.SortOrder.ValueMember = "Date";
+			this.SortOrder.SelectedIndexChanged += new System.EventHandler(this.SortOrderSelectedIndexChanged);
 			// 
 			// SortOrderType
 			// 
@@ -221,6 +224,7 @@ namespace Renamer
 			this.SortOrderType.Size = new System.Drawing.Size(121, 23);
 			this.SortOrderType.TabIndex = 12;
 			this.SortOrderType.Text = "Descending";
+			this.SortOrderType.SelectedIndexChanged += new System.EventHandler(this.SortOrderTypeSelectedIndexChanged);
 			// 
 			// StartFrom
 			// 
@@ -239,6 +243,7 @@ namespace Renamer
 									0,
 									0,
 									0});
+			this.StartFrom.ValueChanged += new System.EventHandler(this.StartFromValueChanged);
 			// 
 			// label3
 			// 
@@ -266,6 +271,7 @@ namespace Renamer
 									0,
 									0,
 									0});
+			this.Step.ValueChanged += new System.EventHandler(this.StepValueChanged);
 			// 
 			// label4
 			// 
@@ -304,6 +310,7 @@ namespace Renamer
 			this.CycleValues.Location = new System.Drawing.Point(504, 59);
 			this.CycleValues.Multiline = true;
 			this.CycleValues.Name = "CycleValues";
+			this.CycleValues.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.CycleValues.Size = new System.Drawing.Size(286, 309);
 			this.CycleValues.TabIndex = 20;
 			this.CycleValues.DragDrop += new System.Windows.Forms.DragEventHandler(this.TextBox2DragDrop);
@@ -315,7 +322,7 @@ namespace Renamer
 									this.programToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(497, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(498, 24);
 			this.menuStrip1.TabIndex = 21;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -330,7 +337,7 @@ namespace Renamer
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -339,7 +346,7 @@ namespace Renamer
 			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(497, 378);
+			this.ClientSize = new System.Drawing.Size(498, 378);
 			this.Controls.Add(this.CycleValues);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.button1);

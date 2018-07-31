@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Renamer
 {
@@ -35,16 +36,69 @@ namespace Renamer
 				Patterns.Items.Add(pattern);
 			}
 			
-			SortOrder.SelectedIndex = 0;
-			SortOrder.Select();
-			SortOrderType.SelectedIndex = 0;
-			SortOrderType.Select();
-			
 			AutoCompleteStringCollection col = new AutoCompleteStringCollection();
 			foreach(string item in File.ReadAllLines(".autocomplete")) {
 				col.Add(item);
 			}
 			FolderPath.AutoCompleteCustomSource = col;
+			
+			LoadConfiguration();
+		}
+		
+		private void LoadConfiguration()
+		{
+			try {
+				FolderPath.Text = Configuration.Value.GetValue("folder");
+			}
+			catch {
+				FolderPath.Text = "";
+			}
+			
+			try {
+				LeadingZeros.Value = int.Parse(Configuration.Value.GetValue("leading-zeros"));
+			}
+			catch {
+				LeadingZeros.Value = 3;
+			}
+			
+			try {
+				SortOrder.SelectedIndex = int.Parse(Configuration.Value.GetValue("sort-order"));
+			}
+			catch {
+				SortOrder.SelectedIndex = 0;
+			}
+			finally {
+				SortOrder.Select();
+			}
+			
+			
+			try {
+				SortOrderType.SelectedIndex = int.Parse(Configuration.Value.GetValue("sort-type"));
+			}
+				
+			catch {
+				SortOrderType.SelectedIndex = 0;
+			}
+			finally {
+				SortOrderType.Select();
+			}
+			
+			
+			try {
+				StartFrom.Value = int.Parse(Configuration.Value.GetValue("start-from"));
+			}
+			catch {
+				StartFrom.Value = 1;
+			}
+			
+			try {
+				Step.Value = StartFrom.Value = int.Parse(Configuration.Value.GetValue("step"));
+			} catch {
+				Step.Value = 1;
+			}
+			
+			
+			
 		}
 		
 		void ChooseFolderButtonClick(object sender, EventArgs e)
@@ -315,6 +369,42 @@ namespace Renamer
 		void MainFormResizeBegin(object sender, EventArgs e)
 		{
 			return;
+		}
+		
+		void FolderPathTextChanged(object sender, EventArgs e)
+		{
+			Configuration.Value.UpdateValue("folder", FolderPath.Text);
+			Configuration.Value.Save();
+		}
+		
+		void LeadingZerosValueChanged(object sender, EventArgs e)
+		{
+			Configuration.Value.UpdateValue("leading-zeros", LeadingZeros.Value.ToString());
+			Configuration.Value.Save();
+		}
+		
+		void SortOrderSelectedIndexChanged(object sender, EventArgs e)
+		{
+			Configuration.Value.UpdateValue("sort-order", SortOrder.SelectedIndex.ToString());
+			Configuration.Value.Save();
+		}
+		
+		void SortOrderTypeSelectedIndexChanged(object sender, EventArgs e)
+		{
+			Configuration.Value.UpdateValue("sort-order", SortOrderType.SelectedIndex.ToString());
+			Configuration.Value.Save();
+		}
+		
+		void StartFromValueChanged(object sender, EventArgs e)
+		{
+			Configuration.Value.UpdateValue("start-from", StartFrom.Value.ToString());
+			Configuration.Value.Save();
+		}
+		
+		void StepValueChanged(object sender, EventArgs e)
+		{
+			Configuration.Value.UpdateValue("step", Step.Value.ToString());
+			Configuration.Value.Save();
 		}
 	}
 }
