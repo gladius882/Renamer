@@ -115,6 +115,7 @@ namespace Renamer
 			this.Patterns.Size = new System.Drawing.Size(452, 184);
 			this.Patterns.Sorted = true;
 			this.Patterns.TabIndex = 2;
+			this.Patterns.DoubleClick += new System.EventHandler(this.PatternsDoubleClick);
 			// 
 			// contextMenuStrip1
 			// 

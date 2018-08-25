@@ -414,5 +414,10 @@ namespace Renamer
 			Form form = new GuideForm();
 			form.ShowDialog();
 		}
+		
+		void PatternsDoubleClick(object sender, EventArgs e)
+		{
+			PatternBox.Text = Patterns.SelectedItem.ToString();
+		}
 	}
 }
