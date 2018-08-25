@@ -46,6 +46,7 @@ namespace Renamer
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.FolderPath = new System.Windows.Forms.TextBox();
 			this.ChooseFolderButton = new System.Windows.Forms.Button();
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -340,7 +341,7 @@ namespace Renamer
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -355,7 +356,7 @@ namespace Renamer
 			// guideToolStripMenuItem
 			// 
 			this.guideToolStripMenuItem.Name = "guideToolStripMenuItem";
-			this.guideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.guideToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
 			this.guideToolStripMenuItem.Text = "Guide";
 			this.guideToolStripMenuItem.Click += new System.EventHandler(this.GuideToolStripMenuItemClick);
 			// 
@@ -385,6 +386,7 @@ namespace Renamer
 			this.Controls.Add(this.FolderPath);
 			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
