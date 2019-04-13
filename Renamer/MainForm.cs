@@ -267,6 +267,13 @@ namespace Renamer
 				
 				throw new Exception();
 			}
+			
+			if(CycleValues.Text.IndexOfAny("\\/:*?\"<>|".ToCharArray()) != -1) {
+				MessageBox.Show("A filname can't contain any of the following characters: \\ / : * ? \" < > |", "Warning", MessageBoxButtons.OK,
+				               MessageBoxIcon.Warning);
+				
+				throw new Exception();
+			}
 		}
 		void AddPatternButtonClick(object sender, EventArgs e)
 		{
@@ -274,6 +281,13 @@ namespace Renamer
 			{
 				MessageBox.Show("First please enter valid pattern", "Warning", MessageBoxButtons.OK,
 				                MessageBoxIcon.Error);
+				return;
+			}
+			
+			if(PatternBox.Text.IndexOfAny("\\/:?\"|".ToCharArray()) != -1) {
+				MessageBox.Show("A pattern can't contain any of the following characters: \\ / : / \" |", "Warning", MessageBoxButtons.OK,
+				               MessageBoxIcon.Warning);
+				
 				return;
 			}
 			

@@ -1,10 +1,12 @@
+
 *
 <CycleValue>
 <CycleValue> *
+<Disk> *
 <FolderName> [*]
 <FolderName> [*] <CycleValue>
 <FolderName>*
 <FolderName>_*
+Boku no Hero Academia [*] <CycleValue>
 FolderName(*)
-
-<Disk> *
+Shingeki no Kyojin [*] <CycleValue>

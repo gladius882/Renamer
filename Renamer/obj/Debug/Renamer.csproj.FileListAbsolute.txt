@@ -7,3 +7,12 @@ C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.pdb
 C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.MainForm.resources
 C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.csproj.GenerateResource.Cache
 C:\Users\gladius882\Desktop\Git\Renamer\Renamer\obj\Debug\Renamer.GuideForm.resources
+D:\Backup\Git\Renamer\Renamer\bin\Debug\Renamer.exe.config
+D:\Backup\Git\Renamer\Renamer\bin\Debug\Renamer.exe
+D:\Backup\Git\Renamer\Renamer\bin\Debug\Renamer.pdb
+D:\Backup\Git\Renamer\Renamer\obj\Debug\Renamer.csprojResolveAssemblyReference.cache
+D:\Backup\Git\Renamer\Renamer\obj\Debug\Renamer.GuideForm.resources
+D:\Backup\Git\Renamer\Renamer\obj\Debug\Renamer.MainForm.resources
+D:\Backup\Git\Renamer\Renamer\obj\Debug\Renamer.csproj.GenerateResource.Cache
+D:\Backup\Git\Renamer\Renamer\obj\Debug\Renamer.exe
+D:\Backup\Git\Renamer\Renamer\obj\Debug\Renamer.pdb

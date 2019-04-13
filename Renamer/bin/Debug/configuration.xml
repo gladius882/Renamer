@@ -1,6 +1,6 @@
 <configuration>
-  <folder>C:\Users\gladius882\Desktop\New folder</folder>
-  <leading-zeros>2</leading-zeros>
+  <folder>C:\Users\gladius882\Desktop\test</folder>
+  <leading-zeros>0</leading-zeros>
   <sort-order>0</sort-order>
   <sort-type>0</sort-type>
   <start-from>1</start-from>
