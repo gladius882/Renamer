@@ -25,6 +25,8 @@ namespace Renamer
 		private bool cycleValuesVisible;
 		private int cycleValueIndex;
 		
+		private string cachePath;
+		
 		public MainForm()
 		{
 			InitializeComponent();
@@ -132,9 +134,13 @@ namespace Renamer
 			
 			files = SortFiles(files, sort,sortType);
 			
+			cachePath = FolderPath.Text+"/.renamerCache";
+			Directory.CreateDirectory(cachePath);
 			foreach(FileInfo file in files) {
 				RenameFile(file);
 			}
+			
+			CleanCache();
 		}
 		
 		private void AddAutocomplete(string directory)
@@ -197,6 +203,7 @@ namespace Renamer
 			for(int i=0; i<oldPath.Length-1; i++) {
 				newPathArr.Add(oldPath[i]+"\\");
 			}
+			newPathArr.Add(".renamerCache\\");
 			
 			string pattern = Patterns.SelectedItem.ToString();
 			pattern = pattern.Replace("<FolderName>", folderName);
@@ -230,6 +237,16 @@ namespace Renamer
 			
 			currentNum += (int)Step.Value;
 			cycleValueIndex++;
+		}
+		
+		private void CleanCache()
+		{
+			foreach(string fileName in Directory.GetFiles(cachePath)) {
+				FileInfo info = new FileInfo(fileName);
+				File.Move(fileName, FolderPath.Text+"\\"+info.Name);
+			}
+			
+			Directory.Delete(cachePath);
 		}
 		
 		private void CheckData()

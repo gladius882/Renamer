@@ -57,6 +57,7 @@ namespace Renamer
 			this.ClientSize = new System.Drawing.Size(805, 493);
 			this.Controls.Add(this.webBrowser1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.KeyPreview = true;
 			this.Name = "GuideForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Guide";
